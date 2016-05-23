@@ -6,8 +6,7 @@ DROP TABLE events;
 CREATE TABLE nations (
   id SERIAL4 primary key,
   name VARCHAR(255),
-  flag VARCHAR(255),
-  athletes VARCHAR(255)
+  flag VARCHAR(255)
 );
 
 CREATE TABLE athletes (

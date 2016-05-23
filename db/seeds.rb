@@ -12,9 +12,9 @@ Nation.delete_all
 Event.delete_all
 
 
-n1 = Nation.new( {'name' => 'Scotland', 'flag' => '../public/flags/scotland.gif', 'athletes' => nil} ).save()
-n2 = Nation.new( {'name' => 'Japan', 'flag' => '../public/flags/japan.gif', 'athletes' => nil} ).save()
-n3 = Nation.new( {'name' => 'Poland', 'flag' => '../public/flags/poland.gif', 'athletes' => nil} ).save()
+n1 = Nation.new( {'name' => 'Scotland', 'flag' => '../public/flags/scotland.gif'} ).save()
+n2 = Nation.new( {'name' => 'Japan', 'flag' => '../public/flags/japan.gif'} ).save()
+n3 = Nation.new( {'name' => 'Poland', 'flag' => '../public/flags/poland.gif'} ).save()
 
 
 a1 = Athlete.new( {'name' => 'R. Murdoch', 'nation_id' => n1.id} ).save()
@@ -29,13 +29,13 @@ a7 = Athlete.new( {'name' => 'K. Czerniak', 'nation_id' => n3.id} ).save()
 a8 = Athlete.new( {'name' => 'A. Jesien', 'nation_id' => n3.id}  ).save()
 a9 = Athlete.new( {'name' => 'L. Kubot', 'nation_id' => n3.id} ).save()
 
-n1.athletes = [a1, a2, a3]
-n2.athletes = [a4, a5, a6]
-n3.athletes = [a7, a8, a9]
+# n1.athletes = [a1, a2, a3]
+# n2.athletes = [a4, a5, a6]
+# n3.athletes = [a7, a8, a9]
 
-n1.save
-n2.save
-n3.save
+# n1.update
+# n2.update
+# n3.update
 
 e1 = Event.new( {'type' => 'Swimming', 'gold_winner' => a4.id, 'silver_winner' => a1.id, 'bronze_winner' => a7.id} ).save()
 e2 = Event.new( {'type' => 'Hurdles', 'gold_winner' => a2.id, 'silver_winner' => a8.id, 'bronze_winner' => a5.id} ).save()

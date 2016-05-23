@@ -19,9 +19,15 @@ class Nation
     return Nation.map_item( sql )
   end
 
+  def athlete_team()
+    sql = "SELECT athletes.* FROM athletes
+          WHERE nation_id = #{@id};"
+    return Athlete.map_items( sql )
+  end
+
   def self.all()
     sql = "SELECT * FROM nations;"
-    return nation.map_items( sql )
+    return Nation.map_items( sql )
   end
 
   def self.delete_all()
@@ -46,13 +52,13 @@ class Nation
     return result
   end
 
-  def self.update( options )
+  def update()
       SqlRunner.run(  
         "UPDATE nations SET 
-          name='#{options['name']}',
-          flag='#{options['flag']}',
-          athletes='#{options['athletes']}'
-          WHERE id=#{options['id']};"
+          name='#{@name}',
+          flag='#{@flag}',
+          athletes='#{@athletes}'
+          WHERE id=#{@id};"
       ) 
   end
 

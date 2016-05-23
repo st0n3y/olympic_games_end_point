@@ -1,34 +1,37 @@
 require( 'pg' )
 
 require_relative 'nation.rb'
+require_relative 'athlete.rb'
 
 class MedalsAnalysis
 
-  def initialize()
-    @nations = []
+  attr_reader :nations
+
+  def initialize( nations )
+    @nations = nations
   end
 
   def total_gold_for_nation( nation )
     total = 0
-    nation.athletes.each do
-      |athlete| total += athlete.gold_medals_won
-    end
+      nation.athlete_team.each do
+        |athlete| total += athlete.gold_medals_won
+      end
     return total
   end
 
   def total_silver_for_nation( nation )
     total = 0
-    nation.athletes.each do
-      |athlete| total += athlete.silver_medals_won
-    end
+      nation.athlete_team.each do
+        |athlete| total += athlete.silver_medals_won
+      end
     return total
   end
 
   def total_bronze_for_nation( nation )
     total = 0
-    nation.athletes.each do
-      |athlete| total += athlete.bronze_medals_won
-    end
+      nation.athlete_team.each do
+        |athlete| total += athlete.bronze_medals_won
+      end
     return total
   end
 
@@ -43,7 +46,8 @@ class MedalsAnalysis
     for nation in @nations
     ranking << {nation: nation, points: total_points_for_nation( nation )}
     end
-    ranking.sort_by {|n| n[:points]}
+    result = ranking.sort_by {|n| n[:points]}
+    return result.reverse
   end
 
 end

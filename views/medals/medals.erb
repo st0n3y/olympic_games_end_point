@@ -1,0 +1,28 @@
+<h1>Medals Table</h1>
+
+<table>
+  <tr> <!-- Column headings -->
+    <td>Rank</td>
+    <td>Nation</td>
+    <td>Gold</td>
+    <td>Silver</td>
+    <td>Bronze</td>
+    <td>Points</td>
+  </tr>
+
+
+<% num = 1 %>
+  <% @ranked_nations.each do |n| %>
+
+  <tr> <!-- Data for first nation -->
+    <td><%= num %></td>
+    <td><%= n[:nation].name %></td>
+    <td><%= @medals_analysis.total_gold_for_nation( n[:nation] ) %></td>
+    <td><%= @medals_analysis.total_silver_for_nation( n[:nation] ) %></td>
+    <td><%= @medals_analysis.total_bronze_for_nation( n[:nation] ) %></td>
+    <td><%= n[:points] %></td>
+  </tr>
+ <% num += 1 %>
+ <% end %>
+
+</table>
