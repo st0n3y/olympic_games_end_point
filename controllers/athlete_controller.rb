@@ -5,7 +5,7 @@ get '/athletes/?' do
 end
 
 #NEW
-get 'athletes/new/?' do
+get '/athletes/new/?' do
   @athletes = Athlete.all()
   erb :'athletes/new'
 end
@@ -14,7 +14,7 @@ end
 post '/athletes/?' do
   @athlete = Athlete.new( params )
   @athlete.save()
-  redirect to '/athletes/?'
+  redirect to '/athletes'
 end
 
 #SHOW
@@ -26,7 +26,6 @@ end
 #EDIT
 get '/athletes/:id/edit/?' do
   @athlete = Athlete.find( params[:id] )
-  @athlete = Athlete.all()
   erb :'athletes/edit'
 end
 

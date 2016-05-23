@@ -1,7 +1,8 @@
 require 'pg'
+
 require_relative '../db/sql_runner.rb'
-require_relative 'nation.rb'
 require_relative 'athlete.rb'
+require_relative 'event_reg.rb'
 
 class Event
 
@@ -17,35 +18,36 @@ class Event
 
   
   def save()
-    sql = "INSERT INTO eventreg (
-      type, gold_winner, silver_winner, bronze_winner, date) 
-      VALUES ( '#{@type}', '#{@gold_winner}', '#{silver_winner}', '#{bronze_winner}' ) 
-      RETURNING *;"
-    return EventReg.map_item(sql)
+    sql = "INSERT INTO events (
+          type, gold_winner, silver_winner, bronze_winner ) 
+          VALUES ( '#{@type}', #{@gold_winner}, #{silver_winner}, #{bronze_winner} ) 
+          RETURNING *;
+        "
+    return EventReg.map_item( sql )
   end
 
   def self.all()
-    sql = "SELECT * FROM eventreg;"
-    return EventReg.map_items(sql)
+    sql = "SELECT * FROM events;"
+    return EventReg.map_items( sql )
   end
 
   def self.delete_all()
-    sql = "DELETE FROM eventreg;"
-    SqlRunner.run(sql)
+    sql = "DELETE FROM events;"
+    SqlRunner.run( sql )
   end
 
-  def self.map_items(sql)
+  def self.map_items( sql )
     eventregs = SqlRunner.run( sql )
-    result = eventregs.map { |eventreg| EventReg.new( eventreg ) }
+    result = event.map { |event| Event.new( event ) }
     return result
   end
 
-  def self.map_item(sql)
-    result = EventReg.map_items(sql)
+  def self.map_item( sql )
+    result = Event.map_items( sql )
     return result.first
   end
 
-  def self.find(id)
+  def self.find( id )
     events = SqlRunner.run( 
       "SELECT * FROM events 
       WHERE id=#{id};" 
@@ -54,21 +56,21 @@ class Event
     return result
   end
 
-  def self.update(options)
+  def self.update( options )
     SqlRunner.run(  
       "UPDATE events SET 
       name='#{options['name']}',
       type='#{options['type']}', 
-      gold_winner='#{options['gold_winner']}', 
-      silver_winner='#{options['silver_winner']}', 
-      bronze_winner='#{options['bronze_winner']}'
+      gold_winner=#{options['gold_winner']}, 
+      silver_winner=#{options['silver_winner']}, 
+      bronze_winner=#{options['bronze_winner']}
       WHERE id=#{options['id']};"
     )
   end
 
   def self.destroy( id )
     SqlRunner.run( 
-      "DELETE FROM event 
+      "DELETE FROM events 
       WHERE id=#{id};" 
     )
   end

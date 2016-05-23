@@ -14,7 +14,7 @@ end
 post '/nations/?' do
   @nation = Nation.new( params )
   @nation.save()
-  redirect to '/nations/?'
+  redirect to '/nations'
 end
 
 #SHOW
@@ -26,7 +26,6 @@ end
 #EDIT
 get '/nations/:id/edit/?' do
   @nation = Nation.find( params[:id] )
-  @nation = Nation.all()
   erb :'nations/edit'
 end
 

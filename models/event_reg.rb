@@ -1,22 +1,25 @@
-require( 'pg' )
+require 'pg'
+
+require_relative './athlete.rb'
+require_relative './event.rb'
 
 class EventReg
 
-  attr_reader :id, :nation_id, :athlete_id
+  attr_reader :id, :event_id, :athlete_id
 
   def initialize( options )
     @id = options['id'].to_i
-    @nation_id = options['nation_id'].to_i
+    @event_id = options['event_id'].to_i
     @athlete_id = options['athlete_id'].to_i
   end
 
   def save()
     sql = "INSERT INTO eventreg (
-      nation_id,
+      event_id,
       athlete_id) 
       VALUES (
-        #{ @nation_id }, 
-        #{ @athlete_id }
+        #{@event_id}, 
+        #{@athlete_id}
       ) RETURNING *;"
     return EventReg.map_item(sql)
   end
@@ -54,7 +57,7 @@ class EventReg
     def self.update(options)
       SqlRunner.run(  
         "UPDATE eventreg SET 
-        nation_id='#{options['nation_id']}',
+        event_id='#{options['event_id']}',
         athlete_id='#{options['athlete_id']}'
         WHERE id=#{options['id']};"
       )

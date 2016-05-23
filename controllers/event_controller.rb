@@ -14,7 +14,7 @@ end
 post '/events/?' do
   @event = Event.new( params )
   @event.save()
-  redirect to '/events/?'
+  redirect to '/events'
 end
 
 #SHOW
@@ -26,7 +26,6 @@ end
 #EDIT
 get '/events/:id/edit/?' do
   @event = Event.find( params[:id] )
-  @event = Event.all()
   erb :'events/edit'
 end
 
