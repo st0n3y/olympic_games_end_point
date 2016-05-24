@@ -18,9 +18,9 @@ CREATE TABLE athletes (
 CREATE TABLE events (
   id SERIAL4 primary key,
   type VARCHAR(255),
-  gold_winner INT4,
-  silver_winner INT4,
-  bronze_winner INT4
+  gold_winner INT4 REFERENCES athletes(id) ON DELETE cascade,
+  silver_winner INT4 REFERENCES athletes(id) ON DELETE cascade,
+  bronze_winner INT4 REFERENCES athletes(id) ON DELETE cascade
 );
 
 CREATE TABLE eventreg (

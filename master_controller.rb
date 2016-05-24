@@ -11,4 +11,3 @@ require_relative './controllers/athlete_controller.rb'
 require_relative './controllers/nation_controller.rb'
 require_relative './controllers/event_controller.rb'
 require_relative './controllers/medals_analysis_controller.rb'
-

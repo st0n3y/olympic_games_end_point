@@ -1,13 +1,15 @@
+require 'pry-byebug'
+
 #INDEX
 get '/events/?' do
   @events = Event.all()
-  erb :'events/index'
+  erb :'events/events_index'
 end
 
 #NEW
 get 'events/new/?' do
   @events = Event.all()
-  erb :'events/new'
+  erb :'events/events_new'
 end
 
 #CREATE
@@ -20,13 +22,13 @@ end
 #SHOW
 get '/events/:id/?' do
   @event = Event.find( params[:id] )
-  erb :'events/show'
+  erb :'events/events_show'
 end
 
 #EDIT
 get '/events/:id/edit/?' do
   @event = Event.find( params[:id] )
-  erb :'events/edit'
+  erb :'events/events_edit'
 end
 
 #UPDATE

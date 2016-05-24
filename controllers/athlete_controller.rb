@@ -1,13 +1,13 @@
 #INDEX
 get '/athletes/?' do
   @athletes = Athlete.all()
-  erb :'athletes/index'
+  erb :'athletes/athletes_index'
 end
 
 #NEW
 get '/athletes/new/?' do
-  @athletes = Athlete.all()
-  erb :'athletes/new'
+  @nations = Nation.all()
+  erb :'athletes/athletes_new'
 end
 
 #CREATE
@@ -19,18 +19,19 @@ end
 
 #SHOW
 get '/athletes/:id/?' do
-  @album = Album.find( params[:id] )
-  erb :'albums/show'
+  @athlete = Athlete.find( params[:id] )
+  erb :'athletes/athletes_show'
 end
 
 #EDIT
 get '/athletes/:id/edit/?' do
+  @nations = Nation.all()
   @athlete = Athlete.find( params[:id] )
-  erb :'athletes/edit'
+  erb :'athletes/athletes_edit'
 end
 
 #UPDATE
-put '/athlete/:id/?' do
+put '/athlete/:id' do
  @athlete = Athlete.update( params )
  redirect to '/athletes/#{params[:id]}'
 end

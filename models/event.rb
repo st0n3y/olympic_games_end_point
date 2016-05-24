@@ -20,15 +20,36 @@ class Event
   def save()
     sql = "INSERT INTO events (
           type, gold_winner, silver_winner, bronze_winner ) 
-          VALUES ( '#{@type}', #{@gold_winner}, #{silver_winner}, #{bronze_winner} ) 
+          VALUES ( '#{@type}', '#{@gold_winner}', '#{silver_winner}', '#{bronze_winner}' ) 
           RETURNING *;
         "
-    return EventReg.map_item( sql )
+    return Event.map_item( sql )
+  end
+
+  def gold_athlete()
+    sql = "SELECT * FROM athletes
+          WHERE id = #{@gold_winner};
+        "
+    return Athlete.map_item( sql )
+  end
+
+  def silver_athlete()
+    sql = "SELECT * FROM athletes
+          WHERE id = #{@silver_winner};
+        "
+    return Athlete.map_item( sql )
+  end
+
+  def bronze_athlete()
+    sql = "SELECT * FROM athletes
+          WHERE id = #{@bronze_winner};
+        "
+    return Athlete.map_item( sql )
   end
 
   def self.all()
     sql = "SELECT * FROM events;"
-    return EventReg.map_items( sql )
+    return Event.map_items( sql )
   end
 
   def self.delete_all()
@@ -37,8 +58,8 @@ class Event
   end
 
   def self.map_items( sql )
-    eventregs = SqlRunner.run( sql )
-    result = event.map { |event| Event.new( event ) }
+    events = SqlRunner.run( sql )
+    result = events.map { |event| Event.new( event ) }
     return result
   end
 

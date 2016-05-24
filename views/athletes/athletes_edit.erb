@@ -1,0 +1,28 @@
+<h1>Update Athlete Details for <%= @athlete.name %></h1>
+
+<form action="/athletes" method="post">
+<input type="hidden" name="_method" value="put">
+
+  <label for="name">Name:</label>
+  <input type="text" name="name" value="<%= @athlete.name %>" />
+
+  <label for="nation_id">Select Nation</label>
+
+  <select name="nation_id">
+
+    <% @nations.each do |n|%>
+    <option value="<%= n.id %>"><%= n.name %></option>
+    <% end %>
+
+  </select>
+
+<input type="submit" value="Confirm details" />
+
+  <form action ="/athletes/<%= @athlete.id %>" method ="post">
+  <input type ="hidden" name ="_method" value ="delete" />
+    
+    <input type ="submit" value ="Delete athlete" />
+
+  </form>
+
+</form>

@@ -1,28 +1,31 @@
 <h1>Medals Table</h1>
 
-<table>
-  <tr> <!-- Column headings -->
-    <td>Rank</td>
-    <td>Nation</td>
-    <td>Gold</td>
-    <td>Silver</td>
-    <td>Bronze</td>
-    <td>Points</td>
+<table style="border-collapse:collapse;">
+  <thead>
+  <tr style="border-bottom:1px solid black;"> <!-- Column headings -->
+    <th style="padding:5px;">Rank</th>
+    <th style="padding:5px;border-left:1px solid black;">Nation</th>
+    <th style="padding:5px;border-left:1px solid black;">Gold</th>
+    <th style="padding:5px;border-left:1px solid black;">Silver</th>
+    <th style="padding:5px;border-left:1px solid black;">Bronze</th>
+    <th style="padding:5px;border-left:1px solid black;">Points</th>
   </tr>
+  </thead>
 
-
-<% num = 1 %>
+  <tbody>
+  <% num = 1 %>
   <% @ranked_nations.each do |n| %>
 
-  <tr> <!-- Data for first nation -->
-    <td><%= num %></td>
-    <td><%= n[:nation].name %></td>
-    <td><%= @medals_analysis.total_gold_for_nation( n[:nation] ) %></td>
-    <td><%= @medals_analysis.total_silver_for_nation( n[:nation] ) %></td>
-    <td><%= @medals_analysis.total_bronze_for_nation( n[:nation] ) %></td>
-    <td><%= n[:points] %></td>
+  <tr> <!-- Data for nations -->
+    <td style="padding:5px;"><%= num %></td> <!-- Ranking -->
+    <td style="padding:5px;border-left:1px solid black;"><img src='flags/<%= n[:nation].flag %>' /><%= n[:nation].name %></td>
+    <td style="padding:5px;border-left:1px solid black;"><%= @medals_analysis.total_gold_for_nation( n[:nation] ) %></td>
+    <td style="padding:5px;border-left:1px solid black;"><%= @medals_analysis.total_silver_for_nation( n[:nation] ) %></td>
+    <td style="padding:5px;border-left:1px solid black;"><%= @medals_analysis.total_bronze_for_nation( n[:nation] ) %></td>
+    <td style="padding:5px;border-left:1px solid black;"><%= n[:points] %></td>
   </tr>
- <% num += 1 %>
- <% end %>
+  <% num += 1 %>
+  <% end %>
+  </tbody>
 
 </table>

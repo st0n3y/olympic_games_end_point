@@ -1,0 +1,7 @@
+<h1>Participating Nations</h1>
+
+<% @nations.each do |n| %>
+
+  <img src='flags/<%= n.flag %>' /><p><%= n.name %></p><br>
+
+<% end %>

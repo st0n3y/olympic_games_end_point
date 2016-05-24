@@ -51,10 +51,17 @@ class Athlete
       return Athlete.map_items( sql ).length
     end
 
+    def nation()
+      sql = "SELECT * FROM nations
+            WHERE id = #{@nation_id};"
+
+      return Nation.map_item(sql).name
+    end
+
 
     def self.all()
       sql = "SELECT * FROM athletes;"
-      return athlete.map_items( sql )
+      return Athlete.map_items( sql )
     end
 
     def self.delete_all()

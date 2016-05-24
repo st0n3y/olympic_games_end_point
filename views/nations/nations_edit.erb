@@ -1,0 +1,21 @@
+<h1>Update Nation Details for <%= @nation.name %></h1>
+
+<form action="/nations" method="post">
+<input type="hidden" name="_method" value="put">
+
+  <label for="name">New name:</label>
+  <input type="text" name="name" value="<%= @nation.name %>" />
+
+  <label for="flag">Upload flag:</label>
+  <input type="file" name="flag" accept="image/*">
+
+<input type="submit" value="Confirm details" />
+
+<form action ="/nations/<%= @nation.id %>" method ="post">
+<input type ="hidden" name ="_method" value ="delete" />
+    
+  <input type ="submit" value ="Delete nation" />
+
+</form>
+
+</form>

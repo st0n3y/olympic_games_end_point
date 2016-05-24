@@ -10,12 +10,18 @@ class Nation
   def initialize( options )
     @id = options['id'].to_i
     @name = options['name']
-    @flag = options['flag']
-    @athletes = options['athletes']
+    if options['flag'].is_a? String
+      @flag = options['flag']
+    else
+      @flag = options['flag'][:filename]
+      File.open('public/flags/' + options['flag'][:filename], "w") do |f|
+         f.write(options['flag'][:tempfile].read)
+       end
+     end
   end
 
   def save()
-    sql = "INSERT INTO nations (name, flag, athletes) VALUES ( '#{@name}', '#{@flag}', '#{@athletes}' ) RETURNING *;"
+    sql = "INSERT INTO nations ( name, flag ) VALUES ( '#{@name}', '#{@flag}' ) RETURNING *;"
     return Nation.map_item( sql )
   end
 
@@ -52,13 +58,12 @@ class Nation
     return result
   end
 
-  def update()
+  def update( options )
       SqlRunner.run(  
-        "UPDATE nations SET 
-          name='#{@name}',
-          flag='#{@flag}',
-          athletes='#{@athletes}'
-          WHERE id=#{@id};"
+        "UPDATE nations 
+        SET name='#{options['name']}',
+        flag='#{options['flag']}'
+        WHERE id=#{options['id']};"
       ) 
   end
 

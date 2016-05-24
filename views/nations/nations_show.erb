@@ -1,0 +1,11 @@
+<b>Nation:</b><br>
+
+<img src='/flags/<%= @nation.flag %>' /><p><%= @nation.name %></p>
+
+<b>Represented by:</b>
+
+<ul>
+<% @nation.athlete_team.each do |a| %>
+  <li><%= a.name %></li>
+<% end %>
+</ul>
