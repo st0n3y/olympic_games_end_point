@@ -1,6 +1,8 @@
 <div class="headers">
 <h1>Participating Nations</h1>
 
+<div class="button"><a href="/nations/new"><div class="border">Add a nation</div></a></div>
+
 <% @nations.each do |n| %>
 
   <img src='flags/<%= n.flag %>' /><p><a href="nations/<%= n.id %>"><%= n.name %></a></p><br>

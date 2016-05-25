@@ -16,7 +16,6 @@ ul {
 }
 
 #navbar {
-  background-color: #73b9ee;
   background:rgba(0,0,0,0.5);
 }
 
@@ -36,13 +35,15 @@ li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 1.5em;
 }
 
 
 
 
 #blue {
-  background-color: #375ECA;
+  background-color: #408ee5;
 }
 
 #black {
@@ -96,6 +97,28 @@ li a {
   height: 30px;
   width: 150px;
 }*/
+
+.button .border {
+  height: 75px;
+  width: 150px;
+  background-color: #ecd920;
+  text-align: center;
+  padding-top: 30px;
+  border-top-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  transition:all 0.7s ease;
+}
+
+.button .border:hover {
+  box-shadow: inset 0 0 0 15px #408ee5;
+}
+
+.button a:link {
+    text-decoration: none;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 1.5em;
+}
+
 
 
 
