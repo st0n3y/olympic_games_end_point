@@ -1,16 +1,42 @@
-<!-- <h1>Log Event Results</h1>
+<h1>Log Event Results</h1>
 
 <form action="/events" method="post">
 
   <label for="type">Event type:</label>
-  <input type="text" name="type" />
+  <select name="type">
 
-  <label for="type">Select Nation</label>
+  <% @events.each do |e| %>
+    <option value="type"><%= e.type %></option>
+    <% end %>
 
-  <select name="nation_id">
+  </select>
 
-    <% @nations.each do |n|%>
-    <option value="<%= n.id %>"><%= n.name %></option>
+  <label for="type">Select Gold Winner</label>
+  <select name="gold_winner">
+
+    <option value="0">No Winner</option>
+    <% @events.registered_athletes do |ra| %>
+    <option value="<%= e.gold_winner %>"><%= ra.name %></option>
+    <% end %>
+
+  </select>
+
+  <label for="type">Select Silver Winner</label>
+  <select name="silver_winner">
+
+    <option value="0">No Winner</option>
+    <% @events.registered_athletes do |ra| %>
+    <option value="<%= e.silver_winner %>"><%= ra.name %></option>
+    <% end %>
+
+  </select>  
+
+  <label for="type">Select Bronze Winner</label>
+  <select name="bronze_winner">
+
+    <option value="0">No Winner</option>
+    <% @events.registered_athletes do |ra| %>
+    <option value="<%= e.bronze_winner %>"><%= ra.name %></option>
     <% end %>
 
   </select>
@@ -19,7 +45,7 @@
 
 </form>
 
- <label for="gold_winner">Gold Winner:</label>
+ <!-- <label for="gold_winner">Gold Winner:</label>
   <select name="gold_winner">
     <option value="0">No Winner</option>
     <% @event.athletes.each do |athlete| %>

@@ -1,9 +1,70 @@
+body {
+  background-color: #73b9ee;  
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#navbar {
+  background-color: #73b9ee;
+  background:rgba(0,0,0,0.5);
+}
+
+li {
+    float: left;
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+li:hover {
+  border-radius: 0%;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+
+
+#blue {
+  background-color: #375ECA;
+}
+
+#black {
+  background-color: black;
+}
+
+#red {
+  background-color: #f44242;
+}
+
+#yellow {
+  background-color: #ecd920;
+}
+
+#green {
+  background-color: #1fbf22;
+}
+
+
+
+
 .parallax {
   perspective: 1px;
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
 }
+
 .parallax__layer {
   position: absolute;
   top: 0;
@@ -30,25 +91,40 @@
   transform: translateZ(-2px) scale(3);
 }
 
-.background {
-  background-color: #53e327;
-  height: 400px;
-  width: 1200px; 
-  text-align: center;
+.base {
+  height: 600px;
+  width: 1200px;
+  margin-top: 250px;
+  background: #7f7f7f;
+  background: rgba(255,255,255,0.0) url('https://s-media-cache-ak0.pinimg.com/736x/94/3e/d0/943ed064427b2b74c874ec041f2070c1.jpg') no-repeat;
+  background-size: 400px 300px;
+  background-position: right;
 }
 
-.base {
-  background-color: #e4f019;
-  height: 400px;
+.base2 {
+  height: 600px;
   width: 1200px;
+  margin-top: 200px;
+  background: #7f7f7f;
+  background: rgba(255,255,255,0.0) url('http://brandchannel.com/wp-content/uploads/2014/11/oly-rio.jpg') no-repeat;
+  background-size: 400px 300px;
+  background-position: center;
+}
+
+.background {
+  background: url('http://larugayoga.com/wp-content/uploads/2015/12/Laruga-Yoga-Workshops-events-retreats_Rio.jpg') no-repeat center center fixed;
+  height: 600px;
+  width: 1200px; 
   text-align: center;
-  margin-top: 500px;
+  margin-top: 50px;
 }
 
 .deep {
+  background: url('http://i.dailymail.co.uk/i/pix/2013/09/05/article-0-1B9E52B7000005DC-571_964x687.jpg') no-repeat fixed;
+  background-size: 600px 400px;
+  background-position: bottom left;
   background-color: #2467db;
-  height: 400px;
-  width: 1200px;
-  text-align: center;
-  margin-top: 250px;
+  height: 600px;
+  width: 800px;
+  margin-top: 300px;
 }

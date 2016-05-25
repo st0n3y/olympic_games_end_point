@@ -2,6 +2,6 @@
 
 <% @nations.each do |n| %>
 
-  <img src='flags/<%= n.flag %>' /><p><%= n.name %></p><br>
+  <img src='flags/<%= n.flag %>' /><p><a href="nations/<%= n.id %>"><%= n.name %></a></p><br>
 
 <% end %>

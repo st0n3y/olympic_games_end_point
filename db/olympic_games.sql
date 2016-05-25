@@ -1,7 +1,7 @@
 DROP TABLE eventreg;
+DROP TABLE events;
 DROP TABLE athletes;
 DROP TABLE nations;
-DROP TABLE events;
 
 CREATE TABLE nations (
   id SERIAL4 primary key,

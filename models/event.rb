@@ -20,14 +20,24 @@ class Event
   def save()
     sql = "INSERT INTO events (
           type, gold_winner, silver_winner, bronze_winner ) 
-          VALUES ( '#{@type}', '#{@gold_winner}', '#{silver_winner}', '#{bronze_winner}' ) 
+          VALUES ( '#{@type}', '#{@gold_winner}', '#{@silver_winner}', '#{@bronze_winner}' ) 
           RETURNING *;
         "
     return Event.map_item( sql )
   end
 
   def registered_athletes()
-    
+    #find all the event reg items with the same event ID
+    # use the registered_athlete function on each one
+    sql = "SELECT * FROM eventreg
+          WHERE event_id = #{@id};
+        "
+    athletes = []
+    result = EventReg.map_items( sql )
+    result.each do |e|
+      athletes << e.registered_athlete
+    end
+    return athletes
   end
 
   def gold_athlete()

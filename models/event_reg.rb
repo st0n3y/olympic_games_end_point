@@ -24,6 +24,14 @@ class EventReg
     return EventReg.map_item(sql)
   end
 
+  def registered_athlete() 
+    sql = "SELECT * FROM athletes
+          WHERE id = #{@athlete_id};
+          "
+
+    return Athlete.map_item( sql )
+  end
+
   def self.all()
     sql = "SELECT * FROM eventreg;"
     return EventReg.map_items(sql)
