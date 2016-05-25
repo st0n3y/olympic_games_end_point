@@ -26,6 +26,10 @@ class Event
     return Event.map_item( sql )
   end
 
+  def registered_athletes()
+    
+  end
+
   def gold_athlete()
     sql = "SELECT * FROM athletes
           WHERE id = #{@gold_winner};

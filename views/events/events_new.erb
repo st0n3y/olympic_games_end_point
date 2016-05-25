@@ -1,0 +1,28 @@
+<!-- <h1>Log Event Results</h1>
+
+<form action="/events" method="post">
+
+  <label for="type">Event type:</label>
+  <input type="text" name="type" />
+
+  <label for="type">Select Nation</label>
+
+  <select name="nation_id">
+
+    <% @nations.each do |n|%>
+    <option value="<%= n.id %>"><%= n.name %></option>
+    <% end %>
+
+  </select>
+
+  <input type="submit" value="Submit results" />
+
+</form>
+
+ <label for="gold_winner">Gold Winner:</label>
+  <select name="gold_winner">
+    <option value="0">No Winner</option>
+    <% @event.athletes.each do |athlete| %>
+    <option value="<%= athlete.id %>" <%= "selected" if @event.gold_winner == athlete.id %>><%= athlete.full_name %></option>
+    <% end %>
+  </select> -->

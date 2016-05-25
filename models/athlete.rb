@@ -58,6 +58,14 @@ class Athlete
       return Nation.map_item(sql).name
     end
 
+    def registered_events()
+      sql = "SELECT * FROM event
+            INNER JOIN 
+            WHERE athlete_id = #{@id};"
+
+
+    end
+
 
     def self.all()
       sql = "SELECT * FROM athletes;"

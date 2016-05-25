@@ -12,9 +12,9 @@ Nation.delete_all
 Event.delete_all
 
 
-n1 = Nation.new( {'name' => 'Scotland', 'flag' => '../public/flags/scotland.gif'} ).save()
-n2 = Nation.new( {'name' => 'Japan', 'flag' => '../public/flags/japan.gif'} ).save()
-n3 = Nation.new( {'name' => 'Poland', 'flag' => '../public/flags/poland.gif'} ).save()
+n1 = Nation.new( {'name' => 'Scotland', 'flag' => 'scotland.gif'} ).save()
+n2 = Nation.new( {'name' => 'Japan', 'flag' => 'japan.gif'} ).save()
+n3 = Nation.new( {'name' => 'Poland', 'flag' => 'poland.gif'} ).save()
 
 
 a1 = Athlete.new( {'name' => 'R. Murdoch', 'nation_id' => n1.id} ).save()

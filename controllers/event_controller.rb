@@ -7,7 +7,7 @@ get '/events/?' do
 end
 
 #NEW
-get 'events/new/?' do
+get '/events/new/?' do
   @events = Event.all()
   erb :'events/events_new'
 end
