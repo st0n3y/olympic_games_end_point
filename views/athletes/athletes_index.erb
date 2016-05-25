@@ -1,9 +1,11 @@
+<div class="headers">
 <h1>Registered Athletes</h1>
 
 <% @athletes.each do |a| %>
 
 <ul>
-  <li><%= a.name %> - representing <%= a.nation %></li>
+  <li><a href="athletes/<%= a.id %>"><%= a.name %></a> - representing <%= a.nation %></li>
 </ul>
 
 <% end %>
+</div>

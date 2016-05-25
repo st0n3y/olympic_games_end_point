@@ -1,3 +1,4 @@
+<div class="headers">
 <h1>Participating Nations</h1>
 
 <% @nations.each do |n| %>
@@ -5,3 +6,4 @@
   <img src='flags/<%= n.flag %>' /><p><a href="nations/<%= n.id %>"><%= n.name %></a></p><br>
 
 <% end %>
+</div>
